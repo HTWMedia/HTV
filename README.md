@@ -1,6 +1,8 @@
 # HTV
 A live media player app（手机、电视直播软件）
 
+app可在右侧release中下载，免费使用，如需定自定义源可联系作者。
+
 ![image](https://img2024.cnblogs.com/blog/33211/202405/33211-20240505115550874-1758625402.png)
 
 ## 使用
@@ -21,8 +23,8 @@ Android系统的手机或电视上
 
 + 支持Android较低的版本，如Android 4.4等
 + 网络环境IPv4或IPv6均可
-+ 直播源稳定，初始化为央视、卫视及当地地方台。如需定自定义源可联系作者。
++ 直播源稳定，初始化为央视、卫视及当地地方台。
 + 节目信息epg采用异步加载，可能稍有延迟
 
 ## 致谢
-my-tv
+[my_tv](https://github.com/yaoxieyoulei/my_tv "my_tv")
