@@ -76,8 +76,8 @@ url传入比如url=http://61.48.189.27:1314/rtp/239.3.1.129:8008
 另外获取epg节目信息的方法，可参考网上资源。上述API可在浏览器中直接访问即可有返回值查看，方便作为自定义源，在其它app中使用。
 
 开发创作不易，如果您觉得有用或者节省了您宝贵的时间，请给作者小小赞下吧，3Q：
-![wxzan](https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115250248-1117416631.jpg style="width: 300px; height: 300px;")
-![zfbzan](https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115429872-844027794.jpg style="width: 300px; height: 300px;")
+<img src="https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115250248-1117416631.jpg" style="width: 300px; height: 300px;"/>
+<img src="https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115429872-844027794.jpg" style="width: 300px; height: 300px;"/>
 
 
 ## 另有以下API：
