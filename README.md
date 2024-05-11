@@ -37,7 +37,7 @@ Android系统的手机或电视上
 <summary>点击查看代码</summary>
 
 ```
-http://8.136.199.131/GetIPTVs
+http://8.136.199.131/Home/GetIPTVs
 
 返回频道列表的json字符串，例如：[{"title":"CCTV1 HD","url":"http://61.48.189.27:1314/rtp/239.3.1.129:8008","logo":"","grouptitle":"央视","groupidx":0},{"title":"CCTV2 HD","url":"http://61.48.189.27:1314/rtp/239.3.1.60:8084","logo":"","grouptitle":"央视","groupidx":0}]
 
@@ -50,7 +50,7 @@ http://8.136.199.131/GetIPTVs
 <summary>点击查看代码</summary>
 
 ```
-http://8.136.199.131/GetIPTVsByLoc?location=
+http://8.136.199.131/Home/GetIPTVsByLoc?location=
 返回频道列表的json字符串
 
 location参数可以传入比如location=湖北省，这时候严格返回该地区的频道，包括央视、卫视和地方频道。
@@ -65,7 +65,7 @@ location参数可以传入比如location=湖北省，这时候严格返回该地
 <summary>点击查看代码</summary>
 
 ```
-http://8.136.199.131/ProbeChannel?url=
+http://8.136.199.131/Home/ProbeChannel?url=
 
 返回频道是否可用以及频道响应时间的json字符串
 
