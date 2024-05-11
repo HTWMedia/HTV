@@ -30,7 +30,7 @@ Android系统的手机或电视上
 
 由于为了兼容IPTV4网络和比较老的Android系统，HTV app采用了开源的Fijkplayer播放器，导致在进入app和切换台的时候可能延迟比较大，这块由于本人精力有限，目前没有好的解决方案，有这方面best practice的同仁可以指导下，在此感谢。
 
-为了解决上述问题，考虑将获取tv频道的API释放出来，以便于您能用其它播放器。目前主要有3个API：
+为了解决上述问题，考虑将获取tv频道的API释放出来，以便于您能用其它播放器。目前主要有4个API：
 
 + 获取频道列表
 <details>
@@ -70,6 +70,19 @@ http://8.136.199.131/Home/ProbeChannel?url=
 返回频道是否可用以及频道响应时间的json字符串
 
 url传入比如url=http://61.48.189.27:1314/rtp/239.3.1.129:8008
+```
+</details>
+
++ 根据频道名称检索频道源url
+<details>
+<summary>点击查看代码</summary>
+
+```
+http://8.136.199.131/Home/GetIPTV?s=
+
+返回频道url
+
+s传入比如s=cctv3等，cctv3是频道频道名称
 ```
 </details>
 
