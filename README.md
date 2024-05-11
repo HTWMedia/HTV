@@ -33,10 +33,17 @@ Android系统的手机或电视上
 为了解决上述问题，考虑将获取tv频道的API释放出来，以便于您能用其它播放器。目前主要有3个API：
 
 + 获取频道列表
+<details>
+<summary>点击查看代码</summary>
+
+```
 http://8.136.199.131/GetIPTVs
+
 返回频道列表的json字符串，例如：[{"title":"CCTV1 HD","url":"http://61.48.189.27:1314/rtp/239.3.1.129:8008","logo":"","grouptitle":"央视","groupidx":0},{"title":"CCTV2 HD","url":"http://61.48.189.27:1314/rtp/239.3.1.60:8084","logo":"","grouptitle":"央视","groupidx":0}]
 
 上述title是频道名，url是频道源，grouptitle是分组，比如央视、卫视等
+```
+</details>
 
 + 根据地区获取频道列表
 <details>
@@ -54,15 +61,23 @@ location参数可以传入比如s=湖北省，这时候严格返回该地区的�
 </details>
 
 + 检测某个频道是否可用
+<details>
+<summary>点击查看代码</summary>
+
+```
 http://8.136.199.131/ProbeChannel?url=
+
 返回频道是否可用以及频道响应时间的json字符串
+
 url传入比如url=http://61.48.189.27:1314/rtp/239.3.1.129:8008
+```
+</details>
 
 另外获取epg节目信息的方法，可参考网上资源。上述API可在浏览器中直接访问即可有返回值查看，方便作为自定义源，在其它app中使用。
 
 开发创作不易，如果您觉得有用或者节省了您宝贵的时间，请给作者小小赞下吧，3Q：
-![wxzan](https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115250248-1117416631.jpg)
-![zfbzan](https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115429872-844027794.jpg)
+![wxzan](https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115250248-1117416631.jpg style="width: 300px; height: 300px;")
+![zfbzan](https://img2024.cnblogs.com/blog/33211/202405/33211-20240511115429872-844027794.jpg style="width: 300px; height: 300px;")
 
 
 ## 另有以下API：
