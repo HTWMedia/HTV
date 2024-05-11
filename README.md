@@ -39,6 +39,10 @@ http://8.136.199.131/GetIPTVs
 上述title是频道名，url是频道源，grouptitle是分组，比如央视、卫视等
 
 + 根据地区获取频道列表
+<details>
+<summary>点击查看代码</summary>
+
+```
 http://8.136.199.131/GetIPTVsByLoc?location=
 返回频道列表的json字符串
 
@@ -46,6 +50,8 @@ location参数可以传入比如s=湖北省，这时候严格返回该地区的�
 如果没有的话可以放开一些，比如只传入s=湖北，这时候会返回和湖北地区相关的频道。
 
 根据地区获取频道列表比直接获取频道列表快，因为少了检索地区的时间。
+```
+</details>
 
 + 检测某个频道是否可用
 http://8.136.199.131/ProbeChannel?url=
