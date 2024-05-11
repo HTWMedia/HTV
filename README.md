@@ -32,7 +32,7 @@ Android系统的手机或电视上
 
 为了解决上述问题，考虑将获取tv频道的API释放出来，以便于您能用其它播放器。目前主要有4个API：
 
-+ 获取频道列表
++ **获取频道列表**
 <details>
 <summary>点击查看代码</summary>
 
@@ -45,7 +45,7 @@ http://8.136.199.131/Home/GetIPTVs
 ```
 </details>
 
-+ 根据地区获取频道列表
++ **根据地区获取频道列表**
 <details>
 <summary>点击查看代码</summary>
 
@@ -60,7 +60,7 @@ location参数可以传入比如location=湖北省，这时候严格返回该地
 ```
 </details>
 
-+ 检测某个频道是否可用
++ **检测某个频道是否可用**
 <details>
 <summary>点击查看代码</summary>
 
@@ -73,7 +73,7 @@ url传入比如url=http://61.48.189.27:1314/rtp/239.3.1.129:8008
 ```
 </details>
 
-+ 根据频道名称检索频道源url
++ **根据频道名称检索频道源url**
 <details>
 <summary>点击查看代码</summary>
 
