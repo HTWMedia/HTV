@@ -2,7 +2,9 @@
 # HTV
 A live media player app（手机、电视直播软件）
 
-app可在右侧release中下载，免费使用，如需定自定义源可联系作者。
+** 源代码已上传，兼容Android 4.4和IPv4，可播放rtp等各种源。
+
+编译后的app可在右侧release中下载，免费使用，如需定自定义源可修改源代码。
 
 ![image](https://img2024.cnblogs.com/blog/33211/202405/33211-20240505115550874-1758625402.png)
 
@@ -60,4 +62,3 @@ Android系统的手机或电视上
 
 ## 致谢
 [my_tv](https://github.com/yaoxieyoulei/my_tv "my_tv")
->>>>>>> a5ee405e152e1281cd3ebae216f5f1a3faef1a2a
