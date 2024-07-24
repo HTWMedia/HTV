@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # HTV
 A live media player app（手机、电视直播软件）
 
