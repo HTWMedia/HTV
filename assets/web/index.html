@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我的电视</title>
+  <link href="https://cdn.staticfile.org/layui/2.9.7/css/layui.css" rel="stylesheet">
+</head>
+
+<body>
+  <script src="https://cdn.staticfile.org/layui/2.9.7/layui.js"></script>
+  <script src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    // Usage
+    layui.use(function () {
+      document.getElementById('customIptvSourceSetBtn').addEventListener('click', () => {
+        var iptvSource = document.getElementById('customIptvSourceInput').value.trim();
+        if (!iptvSource) {
+          layui.layer.msg('请输入订阅链接', { icon: 5 });
+          return
+        }
+
+        $.ajax({
+          type: "GET",
+          url: "/api/IptvSettings/customIptvSource?source=" + iptvSource,
+          success: (data) => {
+            layui.layer.msg('推送成功', { icon: 6 });
+          },
+        });
+      })
+
+      document.getElementById('customIptvSourceResetBtn').addEventListener('click', () => {
+        $.ajax({
+          type: "GET",
+          url: "/api/IptvSettings/customIptvSource?source=",
+          success: (data) => {
+            layui.layer.msg('清除成功', { icon: 6 });
+          },
+        });
+      })
+    });
+  </script>
+
+  <div style="padding: 15px;">
+    <div class="layui-card">
+      <div class="layui-card-header">自定义直播源</div>
+      <div class="layui-card-body">
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <div style="display: flex; flex-direction: column;">
+            <div>支持m3u订阅链接与TVBOX链接</div>
+            <div>推送：将自定义直播源推送到设备</div>
+            <div>删除：删除设备自定义直播源</div>
+          </div>
+
+          <input id="customIptvSourceInput" type="text" name="" placeholder="请输入订阅链接" class="layui-input">
+
+          <div class="layui-btn-container" style="display: flex; justify-content: space-between;">
+            <button id="customIptvSourceSetBtn" type="button" class="layui-btn layui-bg-blue" style="width: 40%;">推送</button>
+            <button id="customIptvSourceResetBtn" type="button" class="layui-btn layui-bg-red" style="width: 40%;">删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
