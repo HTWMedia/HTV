@@ -10,7 +10,7 @@
 [![Stars](https://img.shields.io/github/stars/HTWMedia/HTV?style=social)](https://github.com/HTWMedia/HTV)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/HTWMedia/HTV/blob/main/LICENSE)
 
-[立即下载](https://github.com/HTWMedia/HTV/releases/latest) · [官方主页](https://htwmedia.dpdns.org/Home/Download) · [使用说明](#-使用说明) · [常见问题](#-常见问题)
+[立即下载](https://github.com/HTWMedia/HTV/releases/latest) · [官方主页](https://htwmedia.dpdns.org/Home/Download) · [使用说明](#-使用说明) · [常见问题](#-常见问题) · [English](#english)
 
 </div>
 
@@ -27,6 +27,14 @@ HTV 是一款面向 Android 手机、电视与电视盒子的直播播放软件�
 - 免费使用，无需账号，打开即看
 - 一套安装包同时适配手机与电视盒子
 - 直播源持续维护，日常观看省心
+
+## English
+
+HTV is a free live-TV app for Android phones, TVs and TV boxes. It comes with daily-updated live sources covering CCTV, provincial satellite and local channels. When a stream fails, it automatically switches to the next available source — no manual fiddling. Highlights: favorite channels, catch-up TV (where supported by the source), EPG program guide, full remote-control navigation, IPv4/IPv6 support.
+
+- Free, no account required, works out of the box
+- One APK for both phones and TV boxes
+- Download: [Latest Release](https://github.com/HTWMedia/HTV/releases/latest) · Homepage: [htwmedia.dpdns.org](https://htwmedia.dpdns.org/Home/Download)
 
 ## 功能特性
 
