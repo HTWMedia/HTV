@@ -3,7 +3,7 @@ description: Demonstrates how to use the video_player plugin.
 publish_to: none
 # 加号后为 build number，即 Android versionCode（flutter 构建时会写入 local.properties）
 # 每次发布必须递增，否则商店拒收、用户无法覆盖安装
-version: 6.0.0+600
+version: 6.0.1+601
 
 environment:
   sdk: ^3.1.0
