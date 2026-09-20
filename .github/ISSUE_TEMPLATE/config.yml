@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 源失效反馈 / 频道看不了
+    url: https://github.com/HTWMedia/HTV/discussions
+    about: 某个频道失效请到 Discussions 的「源失效反馈」分类，按格式发帖，会进自动体检队列
+  - name: QQ 交流群
+    url: https://github.com/HTWMedia/HTV#加入社区
+    about: 即时交流请加 QQ 群（一群 2166024531 / 二群 1067526818）
+  - name: 功能建议
+    url: https://github.com/HTWMedia/HTV/discussions
+    about: 新功能想法请到 Discussions 的「功能建议」分类讨论

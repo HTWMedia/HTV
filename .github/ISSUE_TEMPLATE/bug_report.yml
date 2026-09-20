@@ -1,0 +1,59 @@
+name: 问题反馈（Bug report）
+description: 播放异常、崩溃、界面问题等软件本身的 Bug
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！**如果是某个频道看不了 / 源失效，请改去 [Discussions 的「源失效反馈」分类](https://github.com/HTWMedia/HTV/discussions)**，
+        那边会进自动体检队列，处理更快。这里只收软件本身的 Bug。
+  - type: dropdown
+    id: device-type
+    attributes:
+      label: 设备类型
+      options:
+        - 电视 / 盒子（遥控器操作）
+        - 手机（触屏操作）
+        - 两者都有
+    validations:
+      required: true
+  - type: input
+    id: device-model
+    attributes:
+      label: 设备型号与系统版本
+      description: 例如 小米盒子4 / Android 9，或 手机型号 / Android 版本
+      placeholder: 小米盒子4 · Android 9
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App 版本
+      description: 设置页可以看到，例如 v6.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: network
+    attributes:
+      label: 网络环境
+      options:
+        - WiFi
+        - 有线
+        - 蜂窝数据
+        - 不确定
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 发生了什么？
+      description: 现象、复现步骤、期望行为。有截图 / 录屏更好
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志（可选）
+      description: 如有 adb logcat 输出请贴在代码块里
+    validations:
+      required: false
