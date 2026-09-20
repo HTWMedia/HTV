@@ -1,0 +1,65 @@
+title: "[失效] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。按下面填的信息会**直接进入自动体检队列**，通常下一轮源更新就能摘除死源、
+        换上可用源。写得越具体，修得越快。
+
+        > 提示：源的可用性跟地区、运营商关系很大——同一条源，山东联通能看、广东移动可能就不行。
+        > 所以「地区 + 运营商」这一栏请务必填。
+  - type: input
+    id: channel
+    attributes:
+      label: 频道名
+      description: 请写完整频道名；多个频道用「、」隔开，或分开发帖
+      placeholder: CCTV-5
+    validations:
+      required: true
+  - type: dropdown
+    id: symptom
+    attributes:
+      label: 现象
+      options:
+        - 黑屏，没画面也没声音
+        - 一直转圈，起不来
+        - 播放中卡住不动
+        - 提示播放失败 / 播放错误
+        - 有画面没声音
+        - 有声音没画面
+        - 其他（请在补充信息里说明）
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: 地区 + 运营商 / 网络类型
+      description: 例如「山东 · 联通宽带」「广东 · 移动家宽」「美国 · Comcast」
+      placeholder: 山东 · 联通宽带
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App 版本
+      description: 在 App「设置 → 关于」里可以看到
+      placeholder: v6.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 补充信息（可选）
+      description: |
+        其他可能有用的信息：从什么时候开始的、换个网络是否恢复正常、同类型的其他频道是否正常……
+      render: markdown
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: 发帖前请确认
+      options:
+        - label: 我试过点几次换源 / 重启 App，不是偶发问题
+          required: false
+        - label: 我没有在帖子里贴任何私人订阅地址、账号或密码
+          required: true
