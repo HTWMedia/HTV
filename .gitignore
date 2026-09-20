@@ -1,0 +1,30 @@
+# ===== 红线：禁止提交任何源数据 =====
+# 源由服务端下发、或由用户自行配置，仓库里不存任何直播源地址 / 频道清单 / 鉴权参数。
+# 详见 CONTRIBUTING.md「红线」一节。
+assets/json/iptvsource.json
+# 测试夹具里历史上出现过真实源的 URL，别用 git add -A 一把梭
+test/fixtures/*.m3u
+test/fixtures/*.txt
+
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# Android
+# local.properties 含本机 SDK 路径，不该公开
+android/local.properties
+android/.gradle/
+android/key.properties
+.gradle/
+*.jks
+*.keystore
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
