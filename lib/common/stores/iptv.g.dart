@@ -106,6 +106,22 @@ mixin _$IptvStore on IptvStoreBase, Store {
     });
   }
 
+  late final _$currentSourceIndexAtom =
+      Atom(name: 'IptvStoreBase.currentSourceIndex', context: context);
+
+  @override
+  int get currentSourceIndex {
+    _$currentSourceIndexAtom.reportRead();
+    return super.currentSourceIndex;
+  }
+
+  @override
+  set currentSourceIndex(int value) {
+    _$currentSourceIndexAtom.reportWrite(value, super.currentSourceIndex, () {
+      super.currentSourceIndex = value;
+    });
+  }
+
   late final _$refreshIptvListAsyncAction =
       AsyncAction('IptvStoreBase.refreshIptvList', context: context);
 
@@ -122,6 +138,14 @@ mixin _$IptvStore on IptvStoreBase, Store {
     return _$refreshEpgListAsyncAction.run(() => super.refreshEpgList());
   }
 
+  late final _$switchToNextSourceAsyncAction =
+      AsyncAction('IptvStoreBase.switchToNextSource', context: context);
+
+  @override
+  Future<void> switchToNextSource() {
+    return _$switchToNextSourceAsyncAction.run(() => super.switchToNextSource());
+  }
+
   @override
   String toString() {
     return '''
@@ -130,6 +154,7 @@ currentIptv: ${currentIptv},
 iptvInfoVisible: ${iptvInfoVisible},
 channelNo: ${channelNo},
 epgList: ${epgList},
+currentSourceIndex: ${currentSourceIndex},
 iptvList: ${iptvList},
 currentIptvProgrammes: ${currentIptvProgrammes}
     ''';

@@ -23,14 +23,19 @@ class HttpServerUtil {
     var app = Router();
 
     app.get('/', (request) async {
-      return shelf.Response.ok(
-        await rootBundle.loadString('assets/web/index.html'),
-        headers: {'content-type': 'text/html'},
-      );
+      try {
+        return shelf.Response.ok(
+          await rootBundle.loadString('assets/web/index.html'),
+          headers: {'content-type': 'text/html'},
+        );
+      } catch (e) {
+        _logger.error('加载index.html失败: $e');
+        return shelf.Response.internalServerError(body: '加载页面失败: $e');
+      }
     });
 
     app.get('/api/IptvSettings/customIptvSource', (request) async {
-      var source = request.url.queryParameters['source'] as String;
+      var source = request.url.queryParameters['source'] ?? '';
 
       _logger.debug('设置自定义直播源: $source');
       IptvSettings.customIptvSource = source;

@@ -18,6 +18,18 @@ class Iptv {
   /// tvg名称
   late final String tvgName;
 
+  /// 回放类型（回看）。取自 m3u 的 `catchup` 属性：
+  /// `append` = 把 [catchupSource] 追加到直播地址后；`default`/`shift`/`vod` = 直接用 [catchupSource] 作模板。
+  /// 空字符串表示该频道不支持回看。
+  late final String catchup;
+
+  /// 回看地址模板，取自 m3u 的 `catchup-source`。
+  /// 其中 `${(b)yyyyMMddHHmmss}` 为节目开始时间、`${(e)yyyyMMddHHmmss}` 为结束时间。
+  late final String catchupSource;
+
+  /// 可回看的天数，取自 `catchup-days`，未声明时为 1
+  late final int catchupDays;
+
   Iptv({
     required this.idx,
     required this.channel,
@@ -25,7 +37,13 @@ class Iptv {
     required this.name,
     required this.url,
     required this.tvgName,
+    this.catchup = '',
+    this.catchupSource = '',
+    this.catchupDays = 1,
   });
+
+  /// 是否支持回看
+  bool get supportCatchup => catchup.isNotEmpty && catchupSource.isNotEmpty;
 
   @override
   String toString() {

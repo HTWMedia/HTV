@@ -11,4 +11,9 @@ class Debounce {
     _timer?.cancel();
     _timer = Timer(_duration, () => action());
   }
+
+  void cancel() {
+    _timer?.cancel();
+    _timer = null; // 可选：帮助GC回收
+  }
 }

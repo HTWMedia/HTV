@@ -9,22 +9,48 @@ class DelayRenderer extends StatefulWidget {
   @override
   State<DelayRenderer> createState() => _DelayRendererState();
 
+  /// 待延迟派发的回调队列。
+  ///
+  /// 每帧只出队一个：一次性 build 上百个子控件会把帧预算打爆，
+  /// 摊到多帧才能让列表首屏不被卡住。
   static final _queue = <void Function()>[];
+
+  /// 是否已经排了下一帧。
+  ///
+  /// 用来实现「队列排空就停机」——原来无条件每帧 addPostFrameCallback，
+  /// 即使队列永远是空的也会把自己挂到每一帧上，开机后永不休眠。
+  static bool _pumping = false;
+
+  static void enqueue(void Function() fn) {
+    _queue.add(fn);
+    _requestPump();
+  }
+
+  static void remove(void Function() fn) => _queue.remove(fn);
+
+  static void _requestPump() {
+    if (_pumping) return;
+    _pumping = true;
+    SchedulerBinding.instance.addPostFrameCallback((_) => _pump());
+  }
+
+  static void _pump() {
+    if (_queue.isNotEmpty) _queue.removeAt(0)();
+
+    if (_queue.isNotEmpty) {
+      SchedulerBinding.instance.addPostFrameCallback((_) => _pump());
+    } else {
+      // 排空就停机，下次入队时由 enqueue 重新唤醒，不再每帧空转
+      _pumping = false;
+    }
+  }
 }
 
 class _DelayRendererState extends State<DelayRenderer> {
-  Future<void> _dispatch() async {
-    if (DelayRenderer._queue.isNotEmpty) {
-      DelayRenderer._queue.removeAt(0)();
-    }
-
-    SchedulerBinding.instance.addPostFrameCallback((_) => _dispatch());
-  }
-
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance.addPostFrameCallback((_) => _dispatch());
+    DelayRenderer._requestPump();
   }
 
   @override
@@ -59,12 +85,12 @@ class _DelayRendererWidgetState extends State<DelayRendererWidget> {
   @override
   void initState() {
     super.initState();
-    if (widget.enable) DelayRenderer._queue.add(_notify);
+    if (widget.enable) DelayRenderer.enqueue(_notify);
   }
 
   @override
   void dispose() {
-    if (widget.enable) DelayRenderer._queue.remove(_notify);
+    if (widget.enable) DelayRenderer.remove(_notify);
     super.dispose();
   }
 

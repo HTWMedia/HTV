@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
@@ -14,6 +15,10 @@ class PanelIptvInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 同一个 build 里这四个文本要用的颜色是一致的，先取一次
+    final fg = AppTheme.fg(context);
+    final programmeColor = AppTheme.fgFaded(context, AppTheme.oSecondary);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,58 +28,34 @@ class PanelIptvInfo extends StatelessWidget {
             Observer(
               builder: (_) => Text(
                 iptvStore.currentIptv.name,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 60.sp,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.none
-                ),
+                style: AppTheme.text(fg, 60.sp, weight: FontWeight.bold),
               ),
             ),
             SizedBox(width: 40.w),
-            // 播放状态
+            // 播放状态：正常时不渲染任何东西。
+            // 原来放着个空 Text('')，每次 Observer 重建都要走一遍文本排版。
             Observer(
-              builder: (_) => Text(
-                playerStore.state == PlayerState.failed ? playerStore.errorInfo + '播放失败！' : '',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.error,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.none
-                ),
-              ),
-            )
-          ],
+              builder: (_) {
+                if (playerStore.state != PlayerState.failed) return const SizedBox.shrink();
+                return Text(
+                  '${playerStore.errorInfo}播放失败！',
+                  style: AppTheme.text(AppTheme.error(context), 20.sp, weight: FontWeight.bold),
+                );
+              },
+            ),
+            ],
         ),
         // 节目单
         Observer(
-          builder: (_) => ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: epgShowFull ? 1.sw : 500.w),
-            child: Text(
-              '正在播放：${iptvStore.currentIptvProgrammes.current.isNotEmpty ? iptvStore.currentIptvProgrammes.current : '无节目'}',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground.withOpacity(0.8),
-                fontSize: 30.sp,
-                  decoration: TextDecoration.none
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
+          builder: (_) => Text(
+            '正在播放：${iptvStore.currentIptvProgrammes.current.isNotEmpty ? iptvStore.currentIptvProgrammes.current : '无节目'}',
+            style: AppTheme.text(programmeColor, 30.sp),
           ),
         ),
         Observer(
-          builder: (_) => ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: epgShowFull ? 1.sw : 500.w),
-            child: Text(
-              '稍后播放：${iptvStore.currentIptvProgrammes.next.isNotEmpty ? iptvStore.currentIptvProgrammes.next : '无节目'}',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground.withOpacity(0.8),
-                fontSize: 30.sp,
-                  decoration: TextDecoration.none
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
+          builder: (_) => Text(
+            '稍后播放：${iptvStore.currentIptvProgrammes.next.isNotEmpty ? iptvStore.currentIptvProgrammes.next : '无节目'}',
+            style: AppTheme.text(programmeColor, 30.sp),
           ),
         ),
       ],

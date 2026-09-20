@@ -18,31 +18,32 @@ class _SettingsPageState extends State<SettingsPage> {
   final updateStore = GetIt.I<UpdateStore>();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 40).r,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SettingsAppInfo(),
-                SizedBox(height: 30.h),
-                const SettingsMain(),
-              ],
+    // 返回方式（点空白 / ESC）与遮罩交给公共外壳处理，与 PanelPage、二维码页一致
+    return TvModalScaffold(
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 40).r,
+              child: DefaultTextStyle(
+                style: const TextStyle(decoration: TextDecoration.none),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SettingsAppInfo(),
+                    SizedBox(height: 30.h),
+                    const SettingsMain(),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SwipeGestureDetector extends StatelessWidget {
-  SwipeGestureDetector({
+class SwipeGestureDetector extends StatefulWidget {
+  const SwipeGestureDetector({
     super.key,
     required this.child,
     this.onSwipeUp,
@@ -17,15 +17,28 @@ class SwipeGestureDetector extends StatelessWidget {
   final void Function()? onSwipeLeft;
   final void Function()? onSwipeRight;
 
-  final _verticalTracker = VelocityTracker.withKind(PointerDeviceKind.touch);
-  final _horizontalTracker = VelocityTracker.withKind(PointerDeviceKind.touch);
+  @override
+  State<SwipeGestureDetector> createState() => _SwipeGestureDetectorState();
+}
 
-  final _swipeThreshold = 100;
+class _SwipeGestureDetectorState extends State<SwipeGestureDetector> {
+  late VelocityTracker _verticalTracker;
+  late VelocityTracker _horizontalTracker;
+
+  static const _swipeThreshold = 500;
+
+  @override
+  void initState() {
+    super.initState();
+    _verticalTracker = VelocityTracker.withKind(PointerDeviceKind.touch);
+    _horizontalTracker = VelocityTracker.withKind(PointerDeviceKind.touch);
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onVerticalDragStart: (details) {
+        _verticalTracker = VelocityTracker.withKind(PointerDeviceKind.touch);
         if (details.sourceTimeStamp != null) {
           _verticalTracker.addPosition(details.sourceTimeStamp!, details.globalPosition);
         }
@@ -36,13 +49,15 @@ class SwipeGestureDetector extends StatelessWidget {
         }
       },
       onVerticalDragEnd: (details) {
-        if (_verticalTracker.getVelocity().pixelsPerSecond.dy > _swipeThreshold) {
-          onSwipeDown?.call();
-        } else if (_verticalTracker.getVelocity().pixelsPerSecond.dy < -_swipeThreshold) {
-          onSwipeUp?.call();
+        final velocity = _verticalTracker.getVelocity().pixelsPerSecond.dy;
+        if (velocity > _swipeThreshold) {
+          widget.onSwipeDown?.call();
+        } else if (velocity < -_swipeThreshold) {
+          widget.onSwipeUp?.call();
         }
       },
       onHorizontalDragStart: (details) {
+        _horizontalTracker = VelocityTracker.withKind(PointerDeviceKind.touch);
         if (details.sourceTimeStamp != null) {
           _horizontalTracker.addPosition(details.sourceTimeStamp!, details.globalPosition);
         }
@@ -53,13 +68,14 @@ class SwipeGestureDetector extends StatelessWidget {
         }
       },
       onHorizontalDragEnd: (details) {
-        if (_horizontalTracker.getVelocity().pixelsPerSecond.dx > _swipeThreshold) {
-          onSwipeLeft?.call();
-        } else if (_horizontalTracker.getVelocity().pixelsPerSecond.dx < -_swipeThreshold) {
-          onSwipeRight?.call();
+        final velocity = _horizontalTracker.getVelocity().pixelsPerSecond.dx;
+        if (velocity > _swipeThreshold) {
+          widget.onSwipeLeft?.call();
+        } else if (velocity < -_swipeThreshold) {
+          widget.onSwipeRight?.call();
         }
       },
-      child: child,
+      child: widget.child,
     );
   }
 }

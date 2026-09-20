@@ -16,7 +16,7 @@ class PanelPlayerInfo extends StatelessWidget {
         Observer(
           builder: (_) => Text(
             '分辨率：${playerStore.resolution.width.toInt()}×${playerStore.resolution.height.toInt()}',
-            style: TextStyle(color: Theme.of(context).colorScheme.onBackground, fontSize: 30.sp,decoration: TextDecoration.none),
+            style: AppTheme.text(AppTheme.fg(context), 30.sp),
           ),
         )
       ],

@@ -9,7 +9,6 @@ import 'package:video_player_example/pages/panel/widgets/iptv_info.dart';
 import 'package:video_player_example/pages/panel/widgets/iptv_list.dart';
 import 'package:video_player_example/pages/panel/widgets/player_info.dart';
 import 'package:video_player_example/pages/panel/widgets/time.dart';
-
 import '../../common/enums/debug_setting.dart';
 
 class PanelPage extends StatefulWidget {
@@ -25,16 +24,20 @@ class _PanelPageState extends State<PanelPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        _buildTopRight(context),
-        _buildBottom(),
-      ].delayed(enable: DebugSettings.delayRender),
+    // 返回方式（点空白 / ESC）与遮罩交给公共外壳处理
+    return TvModalScaffold(
+      child: Stack(
+        children: [
+          _buildTopRight(context),
+          _buildBottom(),
+        ].delayed(enable: DebugSettings.delayRender),
+      ),
     );
   }
 
   // 右上角
   Widget _buildTopRight(BuildContext context) {
+    final onBackground = AppTheme.fg(context);
     return Positioned(
       top: 20.h,
       right: 20.w,
@@ -50,7 +53,7 @@ class _PanelPageState extends State<PanelPage> {
               height: 50.w,
               child: VerticalDivider(
                 thickness: 2.w,
-                color: Theme.of(context).colorScheme.onBackground,
+                color: onBackground,
               ),
             ),
           ),
@@ -60,23 +63,36 @@ class _PanelPageState extends State<PanelPage> {
     );
   }
 
+  Widget _buildPanelContent() {
+    return FocusTraversalGroup(
+      policy: ReadingOrderTraversalPolicy(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          UnconstrainedBox(
+            alignment: Alignment.topLeft,
+            child: PanelIptvInfo(),
+          ),
+          SizedBox(height: 16.h),
+          PanelPlayerInfo(),
+          SizedBox(height: 8.h),
+          Expanded(child: const PanelIptvList()),
+        ].delayed(enable: DebugSettings.delayRender),
+      ),
+    );
+  }
+
   // 底部
   Positioned _buildBottom() {
     return Positioned(
+      top: 0,
       bottom: 0,
       left: 0,
-      right: 0,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 40).r,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            PanelIptvInfo(),
-            SizedBox(height: 30.h),
-            PanelPlayerInfo(),
-            SizedBox(height: 30.h),
-            const PanelIptvList(),
-          ].delayed(enable: DebugSettings.delayRender),
+      child: SizedBox(
+        width: 360.w,
+        child: Container(
+          padding: const EdgeInsets.only(left: 40).r,
+          child: _buildPanelContent(),
         ),
       ),
     );

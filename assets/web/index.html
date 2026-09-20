@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>我的电视</title>
+  <title>HTV</title>
   <link href="https://cdn.staticfile.org/layui/2.9.7/css/layui.css" rel="stylesheet">
 </head>
 
@@ -23,7 +23,7 @@
 
         $.ajax({
           type: "GET",
-          url: "/api/IptvSettings/customIptvSource?source=" + iptvSource,
+          url: "/api/IptvSettings/customIptvSource?source=" + encodeURIComponent(iptvSource),
           success: (data) => {
             layui.layer.msg('推送成功', { icon: 6 });
           },

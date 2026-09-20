@@ -1,30 +1,48 @@
 # ===== 红线：禁止提交任何源数据 =====
 # 源由服务端下发、或由用户自行配置，仓库里不存任何直播源地址 / 频道清单 / 鉴权参数。
 # 详见 CONTRIBUTING.md「红线」一节。
+# 警告：下面的规则一律不能缩进！Git 只忽略行尾空白，带前导空格的规则会整条静默失效。
 assets/json/iptvsource.json
-# 测试夹具里历史上出现过真实源的 URL，别用 git add -A 一把梭
+# 测试夹具里含真实源 URL，别用 git add -A 一把梭
 test/fixtures/*.m3u
 test/fixtures/*.txt
 
-# Flutter / Dart
+# ===== 签名密钥 / 本机配置 =====
+# release.keystore 是发布签名库，keystore.properties 里是明文密钥口令，
+# 泄露等于把签名权交出去 —— 别人可以用同一把钥匙签名伪造 APK 覆盖安装。
+*.keystore
+*.jks
+android/key.properties
+# 注意文件名是 keystore.properties，和上一条 key.properties 是两个名字，两条都要留
+android/keystore.properties
+# local.properties 含本机 SDK 路径，不该公开
+android/local.properties
+
+# ===== Flutter / Dart 生成物 =====
 .dart_tool/
 .packages
 .pub-cache/
 .pub/
 build/
 coverage/
+# 这两个是 flutter pub get 生成的，里面写死了本机 pub cache 绝对路径
+.flutter-plugins
+.flutter-plugins-dependencies
 
-# Android
-# local.properties 含本机 SDK 路径，不该公开
-android/local.properties
+# ===== Android 构建中间产物 =====
 android/.gradle/
-android/key.properties
 .gradle/
-*.jks
-*.keystore
-*.log
 
-# IDE
+# ===== IDE 与本地工具残留 =====
 .idea/
 *.iml
 .vscode/
+.playwright-mcp/
+.opencode-trace/
+*.log
+# Windows 下重定向写出来的空文件垃圾
+nul
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
