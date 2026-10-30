@@ -64,6 +64,8 @@ HTV is a free live-TV app for Android phones, smart TVs and TV boxes. It ships w
 | `HTV-<version>-armeabi-v7a.apk` | Most TV boxes and older phones (recommended; in-app update uses this) |
 | `HTV-<version>.apk` | Universal build (larger, works on phones and boxes) |
 
+`SHA256SUMS.txt` is attached to each release so you can verify the download.
+
 ## FAQ
 
 ### The spinner never stops / no picture
