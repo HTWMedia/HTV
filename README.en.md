@@ -18,6 +18,11 @@
 
 ![HTV live TV interface with channel list and program info](screenshot.jpg)
 
+<p align="center">
+  <img src="assets/images/screenshot-panel.jpg" width="49%" alt="Channel panel: groups, channel list, now playing and up next">
+  <img src="assets/images/screenshot-settings.jpg" width="49%" alt="Settings panel: user profile, boot autostart, channel-flip direction, lean sources">
+</p>
+
 ---
 
 ## About

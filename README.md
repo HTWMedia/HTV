@@ -18,6 +18,11 @@
 
 ![HTV 电视直播界面：频道列表与节目信息，Android 电视盒子与手机通用](screenshot.jpg)
 
+<p align="center">
+  <img src="assets/images/screenshot-panel.jpg" width="49%" alt="频道面板：分组、频道列表、正在播放与稍后播放">
+  <img src="assets/images/screenshot-settings.jpg" width="49%" alt="设置面板：用户参数、开机自启、换台反转、直播源精简">
+</p>
+
 ---
 
 ## 软件简介
