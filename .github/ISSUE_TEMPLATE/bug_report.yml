@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         感谢反馈！**如果是某个频道看不了 / 源失效，请改去 [Discussions 的「源失效反馈」分类](https://github.com/HTWMedia/HTV/discussions)**，
-        那边会进自动体检队列，处理更快。这里只收软件本身的 Bug。
+        那边有统一的反馈格式，处理更快。这里只收软件本身的 Bug。
   - type: dropdown
     id: device-type
     attributes:

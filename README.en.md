@@ -2,7 +2,7 @@
 
 # HTV · Live TV for Android
 
-**Free, ad-free, works out of the box — a live TV player for Android phones, TVs and TV boxes**
+**Ad-free, works out of the box — a live TV player for Android phones, TVs and TV boxes**
 
 [![Latest Version](https://img.shields.io/github/v/release/HTWMedia/HTV)](https://github.com/HTWMedia/HTV/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/HTWMedia/HTV/total?color=blue)](https://github.com/HTWMedia/HTV/releases/latest)
@@ -16,7 +16,7 @@
 
 ---
 
-![HTV live TV app social preview: free, ad-free, for Android phones, TVs and TV boxes](social-preview.png)
+![HTV live TV app social preview: ad-free, for Android phones, TVs and TV boxes](social-preview.png)
 
 <p align="center">
   <img src="assets/images/screenshot-panel.jpg" width="49%" alt="Channel panel: groups, channel list, now playing and up next">
@@ -27,25 +27,25 @@
 
 ## About
 
-HTV is a free live-TV app for Android phones, smart TVs and TV boxes. It ships with daily-maintained Chinese live sources (CCTV, provincial satellite and local channels), and when a stream fails it automatically switches to the next available one — no manual fiddling. The UI adapts to both remote controls and touch screens.
+HTV is an ad-free live-TV player for Android phones, smart TVs and TV boxes. The app is free, and it can use the built-in channels (CCTV, provincial satellite and local channels) or your own subscription sources. When a stream fails it automatically switches to the next available one — no manual fiddling. The UI adapts to both remote controls and touch screens.
 
-- Free, no account, no ads
+- The app is free, no account and no ads
+- Full built-in sources require sponsorship; custom live sources can be configured
 - One APK for phones and TV boxes (Android 4.4+)
-- Sources are health-checked daily on the server side
 - Open source (Apache-2.0) — build and audit it yourself
 
 > **Different from TVBox-style shells?** TVBox is an empty player: you have to find
-> subscription sources and keep them working yourself. HTV is plug-and-play: the
-> server collects, probes and ranks sources every day, so the app works immediately
-> after installation. Media traffic goes directly to the stream hosts — nothing is
-> relayed through project servers.
+> subscription sources and keep them working yourself. HTV works right after
+> installation with built-in channels, and also accepts your own subscription source
+> in the settings.
 
 ## Features
 
 | Feature | Description |
 | --- | --- |
-| Live channels | CCTV, provincial satellite and local channels, sources updated daily |
-| Automatic failover | On playback errors or no picture, switches to the next healthy source |
+| Live channels | CCTV, provincial satellite and local channels (full built-in sources require sponsorship) |
+| Custom sources | Add your own m3u / txt subscription; leave the default source empty to load only your own |
+| Automatic failover | On playback errors or no picture, switches to the next available source |
 | Favorites | Long-press OK in the channel list to pin/remove favorites |
 | Catch-up TV | Replay recent programs where the source supports it, with a diagnostics panel |
 | EPG | Program guide loads automatically, covering the last 7 days |
@@ -58,6 +58,8 @@ HTV is a free live-TV app for Android phones, smart TVs and TV boxes. It ships w
 1. Get the latest APK from [Releases](https://github.com/HTWMedia/HTV/releases/latest)
 2. Install it on your phone, or sideload to your TV box via USB / file manager / ADB
 3. Allow "install from unknown sources" once if prompted
+4. On first launch, either activate the built-in sources or add your own under
+   "Settings → Custom live source"
 
 | File | Device |
 | --- | --- |
@@ -65,6 +67,16 @@ HTV is a free live-TV app for Android phones, smart TVs and TV boxes. It ships w
 | `HTV-<version>.apk` | Universal build (larger, works on phones and boxes) |
 
 `SHA256SUMS.txt` is attached to each release so you can verify the download.
+
+## Built-in sources & custom sources
+
+- **The app is free**: the player itself is free, ad-free and requires no account.
+- **Built-in sources**: the bundled Chinese channels are a value-added service —
+  **full built-in sources require sponsorship**. Without it, you can use your own
+  subscription source instead.
+- **Custom sources**: enter your own m3u / txt subscription under
+  "Settings → Custom live source". With "Settings → Sources → Default source service"
+  left empty, the app loads only your custom source.
 
 ## FAQ
 
@@ -77,8 +89,8 @@ list fails to load, an on-screen hint appears — press OK to retry.
 
 Open the info panel and switch to another source ("Source X/Y"). If no source works,
 the channel's sources are likely dead — please report it in
-[Discussions](https://github.com/HTWMedia/HTV/discussions) and it enters the automated
-health-check queue.
+[Discussions](https://github.com/HTWMedia/HTV/discussions), or switch to your own
+subscription source.
 
 ### Does it work on an old TV box?
 
@@ -86,7 +98,15 @@ Android 4.4 and above is supported, including common carrier boxes and imported 
 
 ### Is it really ad-free and account-free?
 
-Yes. No ads, no sign-up, no paid channels.
+Yes. The player has no ads, needs no sign-up and collects no viewing behavior.
+Built-in sources are a value-added service: full built-in sources require sponsorship,
+or you can use your own subscription source.
+
+### Do the built-in sources cost money?
+
+The app itself is free. Built-in sources are maintained by the project, so **full
+built-in sources require sponsorship** to cover maintenance. If you prefer a free
+option, add your own subscription source under "Settings → Custom live source".
 
 ### What about catch-up?
 
@@ -95,7 +115,9 @@ for the current channel.
 
 ### Can I add my own playlist?
 
-Custom sources are supported on request — open a discussion or contact the author.
+Yes. Enter your own m3u / txt subscription under "Settings → Custom live source".
+For private source setup and other custom work, contact the author via
+[Discussions](https://github.com/HTWMedia/HTV/discussions).
 
 ## Privacy
 
@@ -104,7 +126,6 @@ HTV requires no account and contains no ad or analytics SDKs.
 - **Network access** is used only to fetch the channel list and EPG, to check for
   updates on GitHub Releases, and to play the streams themselves.
 - **Local data** (favorites, settings, history) stays on your device and is removed on uninstall.
-- **Media traffic** connects directly to the stream hosts, not through project servers.
 - **Source code** is public in this repository.
 
 ## Build from source
@@ -117,8 +138,8 @@ flutter build apk --release --split-per-abi
 ```
 
 Requires Flutter 3.13+ and the Android SDK. The repository contains no stream URLs —
-channel data is delivered at runtime by the default source service, which can be
-replaced with your own subscription endpoint in the app settings.
+built-in channel data is fetched by the app at runtime, and can be replaced with your
+own subscription endpoint under "Settings → Custom live source".
 
 ## Community
 
@@ -130,7 +151,15 @@ replaced with your own subscription endpoint in the app settings.
 
 ## Support
 
-HTV is free with no paywall. Donations are voluntary and unlock nothing.
+The player itself is free, ad-free and requires no account. Built-in sources are
+maintained by the project, so **full built-in sources require sponsorship**; without
+it, you can add your own subscription source under "Settings → Custom live source"
+at no cost.
+
+If HTV saves you time, voluntary sponsorship is welcome:
+
+> Sponsorship supports project maintenance, and activating the built-in sources is
+> the corresponding benefit; the free use of the player itself is unchanged.
 
 ## Acknowledgements
 
