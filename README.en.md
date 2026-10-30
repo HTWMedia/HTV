@@ -124,6 +124,8 @@ replaced with your own subscription endpoint in the app settings.
 
 - [GitHub Discussions](https://github.com/HTWMedia/HTV/discussions) — bug reports,
   dead-channel reports, feature requests (searchable and indexed)
+- New here? Start with the [download & feedback guide](https://github.com/HTWMedia/HTV/discussions/46)
+  and the [dead-channel report guide](https://github.com/HTWMedia/HTV/discussions/47)
 - Watch → Custom → Releases to get notified about new versions
 
 ## Support

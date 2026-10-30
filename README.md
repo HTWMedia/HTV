@@ -176,6 +176,8 @@ flutter build apk --release --split-per-abi
 | **QQ 交流群** | 即时交流、反馈失效频道、问用法 | 「HTV及视频创作交流二」**1049642435**（一群 / 二群已满员，扫码见下） |
 | **Watch 仓库** | 不发 QQ 也想收到发版通知：点仓库右上角 Watch → Custom → Releases | [HTWMedia/HTV](https://github.com/HTWMedia/HTV) |
 
+新用户先看两篇：**[下载、更新与反馈指引](https://github.com/HTWMedia/HTV/discussions/46)** · **[源失效反馈指南](https://github.com/HTWMedia/HTV/discussions/47)**
+
 <p>
   <img src="qq-group.jpg" alt="QQ 群：HTV及视频创作交流二，群号 1049642435" width="220" />
 </p>
