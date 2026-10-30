@@ -16,7 +16,7 @@
 
 ---
 
-![HTV live TV interface with channel list and program info](screenshot.jpg)
+![HTV live TV app social preview: free, ad-free, for Android phones, TVs and TV boxes](social-preview.png)
 
 <p align="center">
   <img src="assets/images/screenshot-panel.jpg" width="49%" alt="Channel panel: groups, channel list, now playing and up next">

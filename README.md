@@ -16,7 +16,7 @@
 
 ---
 
-![HTV 电视直播界面：频道列表与节目信息，Android 电视盒子与手机通用](screenshot.jpg)
+![HTV 电视直播软件社交预览：免费、无广告，Android 手机、电视与电视盒子通用](social-preview.png)
 
 <p align="center">
   <img src="assets/images/screenshot-panel.jpg" width="49%" alt="频道面板：分组、频道列表、正在播放与稍后播放">
